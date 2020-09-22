@@ -3,6 +3,7 @@ from collections import namedtuple
 
 from io import StringIO
 from fabric.operations import sudo, run, put
+from offutils import ensure_quoted
 
 User = namedtuple("User", ("name", "groups"))
 
@@ -25,7 +26,7 @@ def add_users0(*args, **kwargs):
                     sudo(
                         "useradd '{user.name}' {groups}".format(
                             user=user,
-                            groups=" -G ".join(["'{}'".format(n) for n in user.groups]),
+                            groups=" -G ".join(map(ensure_quoted, user.groups)),
                         )
                     )
                 return user
