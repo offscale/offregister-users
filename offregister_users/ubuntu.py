@@ -1,8 +1,7 @@
 from collections import namedtuple
-
-
 from io import StringIO
-from fabric.operations import sudo, run, put
+
+from fabric.operations import put, run, sudo
 from offutils import ensure_quoted
 
 User = namedtuple("User", ("name", "groups"))
