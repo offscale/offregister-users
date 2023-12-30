@@ -6,7 +6,7 @@ from offutils import ensure_quoted
 User = namedtuple("User", ("name", "groups"))
 
 
-def add_users0(*args, **kwargs):
+def add_users0(c, *args, **kwargs):
     if "add_users" in kwargs:
 
         def one(user):
